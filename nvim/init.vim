@@ -65,7 +65,7 @@ filetype plugin indent on    " required
 
 
 
-" Plugin 'connorholyday/vim-snazzy'
+" Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 
 " Plug 'connorholyday/vim-snazzy'
