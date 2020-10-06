@@ -1,7 +1,7 @@
 set incsearch
 set ignorecase
 
-set number
+set relativenumber
 
 set cursorline
 
@@ -16,9 +16,23 @@ set nowrap
 set foldmethod=indent
 set nofoldenable
 
-set guifont=Cascadia\ code\ Regular
-
 syntax enable
+
+nnoremap <TAB><TAB> <C-W><C-W>
+nnoremap <TAB>j <C-W>j
+nnoremap <TAB>h <C-W>h
+nnoremap <TAB>l <C-W>l
+nnoremap <TAB>k <C-W>k
+
+nnoremap <A-e>r :sp<CR>
+nnoremap <A-e>c :vsp<CR>
+nnoremap <A-e>n :tabnew 
+nnoremap <A-e>q :q<CR>
+
+nnoremap <A-w>v  :Vista<CR>
+nnoremap <A-w>ftn  :FloatermNew 
+nnoremap <A-w>git  :FloatermNew lazygit<CR>
+nnoremap <A-w>ff  :FZF<CR>
 
 call plug#begin('~/.vim/plugged')
 
@@ -29,6 +43,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf'
 
 call plug#end()
+
 
 
 filetype off                  " required
@@ -43,3 +58,23 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 let g:airline#extensions#tabline#enabled = 1
+
+let g:vista_executive_for = {
+  \ 'php': 'coc',
+  \ }
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 0
+
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
