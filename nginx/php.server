@@ -1,0 +1,18 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	
+	root /home/nzzz964/Nzzz/code/php;
+	index index.php index.html;
+	access_log /var/log/nginx/dev-access.log;
+        error_log /var/log/nginx/dev-error.log;
+	
+	server_name  _;
+	location ~ \.php(.*)$ {
+		fastcgi_index index.php;
+		fastcgi_pass  unix:/run/php/php7.4-fpm.sock;
+ 		fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+  		include fastcgi_params;
+	}
+}
+
