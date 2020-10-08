@@ -65,14 +65,17 @@ nnoremap <TAB>> <C-W>30>
 nnoremap <TAB>n :bn<CR>
 nnoremap <TAB>p :bp<CR>
 
+nnoremap <A-e>s :e!<CR>
+
 nnoremap <A-e>r :sp<CR>
 nnoremap <A-e>c :vsp<CR>
-nnoremap <A-e>n :tabnew<CR>
+nnoremap <A-e>t :tabnew<CR>
+nnoremap <A-e>w :tabnew<CR>
 
 nnoremap <A-k>w :q<CR>
 nnoremap <A-k>t :q<CR>
 nnoremap <A-k>a :qa<CR>
-nnoremap <A-k>b :bd<CR>
+nnoremap <A-k>k :bd<CR>
 
 nnoremap <A-w>v :Vista<CR>
 nnoremap <A-w>fn :FloatermNew
@@ -95,6 +98,7 @@ Plug 'vim-vdebug/vdebug'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'Chiel92/vim-autoformat'
+Plug 'turbio/bracey.vim' " Live Server
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -168,6 +172,10 @@ let g:coc_global_extensions = [
             \ 'coc-phpls',
             \ 'coc-eslint',
             \ 'coc-vetur',
+            \ 'coc-pairs',
+            \ 'coc-marketplace',
+            \ 'coc-emmet',
+            \ 'coc-spell-checker',
             \ 'coc-vimlsp']
 " Use <TAB> select completion
 inoremap <silent><expr> <TAB>
