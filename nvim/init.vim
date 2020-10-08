@@ -67,12 +67,13 @@ nnoremap <TAB>p :bp<CR>
 
 nnoremap <A-e>r :sp<CR>
 nnoremap <A-e>c :vsp<CR>
-nnoremap <A-e>n :tabnew<CR>
+nnoremap <A-e>t :tabnew<CR>
+nnoremap <A-e>w :tabnew<CR>
 
 nnoremap <A-k>w :q<CR>
 nnoremap <A-k>t :q<CR>
 nnoremap <A-k>a :qa<CR>
-nnoremap <A-k>b :bd<CR>
+nnoremap <A-k>k :bd<CR>
 
 nnoremap <A-w>v :Vista<CR>
 nnoremap <A-w>fn :FloatermNew
@@ -168,6 +169,8 @@ let g:coc_global_extensions = [
             \ 'coc-phpls',
             \ 'coc-eslint',
             \ 'coc-vetur',
+            \ 'coc-pairs',
+            \ 'coc-marketplace',
             \ 'coc-vimlsp']
 " Use <TAB> select completion
 inoremap <silent><expr> <TAB>
