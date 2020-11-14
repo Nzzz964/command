@@ -6,6 +6,7 @@ let mapleader=" "
 " ============================================================================================ "
 "                                     search setting                                           "
 " ============================================================================================ "
+let mapleader=" "
 set hlsearch
 exec "nohlsearch"
 set incsearch
@@ -28,7 +29,7 @@ set softtabstop=4
 set nowrap
 
 " ============================================================================================ "
-"                                    flod setting                                              "
+"                                    floder setting                                              "
 " ============================================================================================ "
 set foldmethod=indent
 set nofoldenable
@@ -104,6 +105,7 @@ Plug 'luochen1990/rainbow'
 Plug 'Chiel92/vim-autoformat'
 Plug 'turbio/bracey.vim' " Live Server
 Plug 'groenewege/vim-less'
+Plug 'junegunn/vim-easy-align'
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -141,6 +143,7 @@ nmap <TAB>p <Plug>AirlineSelectPrevTab
 " ============================================================================================ "
 let g:vista_executive_for = {
             \ 'php': 'coc',
+            \ 'c'  : 'coc'
             \ }
 let g:vista#renderer#enable_icon = 1
 
@@ -195,6 +198,7 @@ let g:coc_global_extensions = [
             \ 'coc-spell-checker',
             \ 'coc-html',
             \ 'coc-css',
+            \ 'coc-clangd',
             \ 'coc-vimlsp']
 " Use <TAB> select completion
 inoremap <silent><expr> <TAB>
@@ -220,13 +224,13 @@ function! s:show_documentation()
     endif
 endfunction
 nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
+nmap <leader>rn <Plug>(coc-rename)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <leader>L :call CocAction('format')<CR>
-
 " ============================================================================================ "
 "                                    nerdtree                                                  "
 " ============================================================================================ "

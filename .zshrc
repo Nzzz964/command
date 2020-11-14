@@ -97,9 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pandown="aria2c -x16 --user-agent=netdisk"
 alias ll="ls -ahli --color=auto"
 alias rg="ranger"
 alias nvi="nvim"
+alias composer="php ~/composer.phar"
 
 # Node Version Maneger
 export NVM_DIR="$HOME/.nvm"
