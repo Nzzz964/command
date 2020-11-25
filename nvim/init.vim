@@ -85,7 +85,13 @@ nnoremap <A-w>fn :FloatermNew
 nnoremap <A-w>git :FloatermNew lazygit<CR>
 nnoremap <A-w>ff :FZF<CR>
 
-
+" ============================================================================================ "
+"                                    clipboard setting                                          "
+" ============================================================================================ "
+nnoremap <leader>y "*y
+nnoremap <leader>p "*p
+nnoremap <leader>Y "+y
+nnoremap <leader>P "+p
 
 " ============================================================================================ "
 "                                    vim-plug setting                                          "
