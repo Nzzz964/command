@@ -1,0 +1,45 @@
+" ============================================================================================ "
+"                                     mapleader setting                                        "
+" ============================================================================================ "
+let mapleader=" "
+
+" ============================================================================================ "
+"                                     search setting                                           "
+" ============================================================================================ "
+set hlsearch
+set incsearch
+set ignorecase
+
+" ============================================================================================ "
+"                                    line number setting                                       "
+" ============================================================================================ "
+set number
+set relativenumber
+set cursorline
+
+" ============================================================================================ "
+"                                    mapping setting                                           "
+" ============================================================================================ "
+nnoremap s <nop>
+nnoremap <ESC> :nohlsearch<return><ESC>
+
+" Window
+nnoremap <TAB><TAB> <C-W><C-W>
+nnoremap <TAB>j <C-W>j
+nnoremap <TAB>h <C-W>h
+nnoremap <TAB>l <C-W>l
+nnoremap <TAB>k <C-W>k
+
+nnoremap <leader>r :sp<CR>
+nnoremap <leader>c :vsp<CR>
+nnoremap <leader>k :q<CR>
+
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
