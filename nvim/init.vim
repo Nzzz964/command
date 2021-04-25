@@ -67,22 +67,23 @@ nnoremap <TAB>> <C-W>30>
 "nnoremap <TAB>p :bp<CR>
 
 " reload current buffer file
-nnoremap <A-e>s :e!<CR>
+nnoremap <silent> <A-e>s :e!<CR>
 
-nnoremap <A-e>r :sp<CR>
-nnoremap <A-e>c :vsp<CR>
-nnoremap <A-e>t :tabnew<CR>
-nnoremap <A-e>w :tabnew<CR>
+nnoremap <silent> <A-e>r :sp<CR>
+nnoremap <silent> <A-e>c :vsp<CR>
+nnoremap <silent> <A-e>t :tabnew<CR>
+nnoremap <silent> <A-e>w :tabnew<CR>
 
-nnoremap <A-k>w :q<CR>
-nnoremap <A-k>t :q<CR>
-nnoremap <A-k>a :qa<CR>
-nnoremap <A-k>k :bd<CR>
+nnoremap <silent> <A-k>w :q<CR>
+nnoremap <silent> <A-k>t :q<CR>
+nnoremap <silent> <A-k>a :qa<CR>
+nnoremap <silent> <A-k>k :bd<CR>
+nnoremap <silent> <leader>k :bd<CR>
 
-nnoremap <A-w>v :Vista!!<CR>
-nnoremap <A-w>fn :FloatermNew
-nnoremap <A-w>git :FloatermNew lazygit<CR>
-nnoremap <A-w>ff :FZF<CR>
+nnoremap <silent><A-w>v :Vista!!<CR>
+nnoremap <silent><A-w>c :Clap<CR>
+nnoremap <silent><A-w>fn :FloatermNew<CR>
+nnoremap <silent><A-w>ff :FZF<CR>
 
 " ============================================================================================ "
 "                                    clipboard setting                                          "
@@ -193,17 +194,19 @@ let g:rainbow_active = 1
 " ============================================================================================ "
 let g:coc_global_extensions = [
             \ 'coc-json',
-            \ 'coc-tsserver',
             \ 'coc-phpls',
+            \ 'coc-marketplace',
+            \ 'coc-spell-checker',
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-html',
+            \ 'coc-pairs',
+            \ 'coc-emmet',
+            \ 'coc-css',
             \ 'coc-eslint',
             \ 'coc-vetur',
-            \ 'coc-pairs',
-            \ 'coc-marketplace',
-            \ 'coc-emmet',
-            \ 'coc-spell-checker',
-            \ 'coc-html',
-            \ 'coc-css',
-            \ 'coc-clangd',
+            \ 'coc-prettier',
+            \ 'coc-tsserver',
             \ 'coc-vimlsp']
 " Use <TAB> select completion
 inoremap <silent><expr> <TAB>
@@ -229,6 +232,7 @@ function! s:show_documentation()
     endif
 endfunction
 nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
+
 nmap <leader>rn <Plug>(coc-rename)
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -237,9 +241,10 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <leader>L :call CocAction('format')<CR>
 " ============================================================================================ "
-"                                    nerdtree                                                  "
+"                                     nerdtree                                                 "
 " ============================================================================================ "
-nnoremap tt :NERDTreeToggle<CR>
+nnoremap <silent> tt :NERDTreeToggle<CR>
+nnoremap <silent> tc :NERDTreeFind<CR>
 
 " ============================================================================================ "
 "                                    File Watcher                                              "
