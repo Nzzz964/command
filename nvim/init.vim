@@ -1,136 +1,99 @@
-" ============================================================================================ "
-"                                     mapleader setting                                        "
-" ============================================================================================ "
 let mapleader=" "
 
-" ============================================================================================ "
-"                                     search setting                                           "
-" ============================================================================================ "
-set hlsearch
-exec "nohlsearch"
-set incsearch
-set ignorecase
+syntax enable
+set hidden
+set showcmd
 
-" ============================================================================================ "
-"                                    line number setting                                       "
-" ============================================================================================ "
 set number
-set relativenumber
 set cursorline
 
-" ============================================================================================ "
-"                                    tap setting                                               "
-" ============================================================================================ "
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set nowrap
 
-" ============================================================================================ "
-"                                    floder setting                                              "
-" ============================================================================================ "
-set foldmethod=indent
-set nofoldenable
-
-" ============================================================================================ "
-"                                    syntax setting                                            "
-" ============================================================================================ "
-syntax enable
-
-" ============================================================================================ "
-"                                    something else setting                                    "
-" ============================================================================================ "
-set hidden
-set showcmd
-
-" ============================================================================================ "
-"                                    mapping setting                                           "
-" ============================================================================================ "
+" 按键绑定
 nnoremap s <nop>
-nnoremap R :source $MYVIMRC<CR>
 nnoremap <C-s> :w<CR>
 inoremap <silent> <C-s> <ESC>:w<CR>a
-nnoremap <ESC> :nohlsearch<return><ESC>
-" Window
 nnoremap <TAB><TAB> <C-W><C-W>
 nnoremap <TAB>j <C-W>j
 nnoremap <TAB>h <C-W>h
 nnoremap <TAB>l <C-W>l
 nnoremap <TAB>k <C-W>k
+
+" 终端模式
+tnoremap <ESC> <C-\><C-N>
+
 nnoremap <TAB>, <C-W>15<
 nnoremap <TAB>. <C-W>15>
 nnoremap <TAB>< <C-W>30<
 nnoremap <TAB>> <C-W>30>
-" Buffer
-"nnoremap <TAB>n :bn<CR>
-"nnoremap <TAB>p :bp<CR>
 
-" reload current buffer file
-nnoremap <silent> <A-e>s :e!<CR>
+nnoremap <TAB>= <C-W>2+
+nnoremap <TAB>- <C-W>2-
 
-nnoremap <silent> <A-e>r :sp<CR>
-nnoremap <silent> <A-e>c :vsp<CR>
-nnoremap <silent> <A-e>t :tabnew<CR>
-nnoremap <silent> <A-e>w :tabnew<CR>
-
-nnoremap <silent> <A-k>w :q<CR>
-nnoremap <silent> <A-k>t :q<CR>
-nnoremap <silent> <A-k>a :qa<CR>
-nnoremap <silent> <A-k>k :bd<CR>
 nnoremap <silent> <leader>k :bd<CR>
 
-nnoremap <silent><A-w>v :Vista!!<CR>
-nnoremap <silent><A-w>c :Clap<CR>
-nnoremap <silent><A-w>fn :FloatermNew<CR>
-nnoremap <silent><A-w>ff :FZF<CR>
+" 打字机模式
+nnoremap <leader>et :set scrolloff=999<CR>
+nnoremap <leader>dt :set scrolloff=0<CR>
 
-" ============================================================================================ "
-"                                    clipboard setting                                          "
-" ============================================================================================ "
+" 
+nnoremap <silent> <leader>sh :sp<CR>
+nnoremap <silent> <leader>sv :vsp<CR>
+
+" 搜索设置
+set hlsearch
+exec "nohlsearch"
+set incsearch
+" 忽略大小写
+set ignorecase
+
+" 剪贴板设置
 nnoremap <leader>y "*y
 nnoremap <leader>p "*p
 nnoremap <leader>Y "+y
 nnoremap <leader>P "+p
 
-" ============================================================================================ "
-"                                    vim-plug setting                                          "
-" ============================================================================================ "
-call plug#begin('~/.vim/plugged')
+nnoremap <ESC> :nohlsearch<CR><ESC>
+
+" 鼠标右键设置
+nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+
+" 插件设置
+call plug#begin('~/AppData/Local/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liuchengxu/vista.vim'
-Plug 'liuchengxu/vim-clap'
-Plug 'voldikss/vim-floaterm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'vim-vdebug/vdebug'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'luochen1990/rainbow'
-Plug 'Chiel92/vim-autoformat'
-Plug 'turbio/bracey.vim' " Live Server
-Plug 'groenewege/vim-less'
-Plug 'junegunn/vim-easy-align'
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Themes
-Plug 'connorholyday/vim-snazzy'
-Plug 'morhetz/gruvbox'
+Plug 'luochen1990/rainbow'
+Plug 'Yggdroot/indentLine'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'connorholyday/vim-snazzy'
+
 call plug#end()
 
+" indentLine 配置
+let g:indentLine_char = 'c'
+let g:indentLine_char_list = ['.', '-', '-', '¦',]
+let g:indentLine_color_term = 239
 
+" rainbow 配置
+let g:rainbow_active = 1
 
-" ============================================================================================ "
-"                                    vim-airline                                               "
-" ============================================================================================ "
+" vim-airline 配置
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let airline#extensions#tabline#middle_click_preserves_windows = 1
+let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -144,71 +107,23 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <TAB>n <Plug>AirlineSelectNextTab
 nmap <TAB>p <Plug>AirlineSelectPrevTab
 
-" ============================================================================================ "
-"                                    vista.vim                                                 "
-" ============================================================================================ "
-let g:vista_executive_for = {
-            \ 'php': 'coc',
-            \ 'c'  : 'coc'
-            \ }
-let g:vista#renderer#enable_icon = 1
-
-" ============================================================================================ "
-"                                    fzf                                                       "
-" ============================================================================================ "
-let g:fzf_action = {
-            \ 'ctrl-b': 'edit',
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-r': 'sp',
-            \ 'ctrl-c': 'vsp' }
-
-" ============================================================================================ "
-"                                    indentLine                                                "
-" ============================================================================================ "
-let g:indentLine_char = 'c'
-let g:indentLine_char_list = ['.', '-', '-', '¦',]
-let g:indentLine_color_term = 239
-
-" ============================================================================================ "
-"                                    vim-vdebug                                                "
-" ============================================================================================ "
-let g:vdebug_options = {
-            \    'port' : 9001,
-            \    'watch_window_style' : 'expanded',
-            \    'layout': 'horizontal',
-            \}
-
-" ============================================================================================ "
-"                                    vim-visual-multi                                          "
-" ============================================================================================ "
-let g:VM_mouse_mappings = 1
-let g:VM_theme = 'neon'
-
-" ============================================================================================ "
-"                                    rainbow                                                   "
-" ============================================================================================ "
-let g:rainbow_active = 1
-
-" ============================================================================================ "
-"                                    coc.nvim                                                  "
-" ============================================================================================ "
+" coc.nvim 配置
 let g:coc_global_extensions = [
             \ 'coc-json',
-            \ 'coc-phpls',
             \ 'coc-marketplace',
             \ 'coc-spell-checker',
-            \ 'coc-clangd',
-            \ 'coc-cmake',
             \ 'coc-html',
             \ 'coc-pairs',
             \ 'coc-emmet',
             \ 'coc-css',
             \ 'coc-eslint',
             \ 'coc-vetur',
-            \ 'coc-prettier',
             \ 'coc-tsserver',
+            \ 'coc-explorer',
+            \ 'coc-lists',
             \ 'coc-vimlsp']
-" Use <TAB> select completion
+
+" 使用 <TAB> 完成代码补全
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -218,12 +133,26 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(b:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
+
+nmap <leader>rn <Plug>(coc-rename)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <leader>L :call CocAction('format')<CR>
+
+" 查看文档
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
@@ -233,32 +162,10 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
 
-nmap <leader>rn <Plug>(coc-rename)
+" coc-explorer 配置
+nnoremap tt <Cmd>CocCommand explorer<CR>
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <leader>L :call CocAction('format')<CR>
-" ============================================================================================ "
-"                                     nerdtree                                                 "
-" ============================================================================================ "
-nnoremap <silent> tt :NERDTreeToggle<CR>
-nnoremap <silent> tc :NERDTreeFind<CR>
+" fzf 配置
+nnoremap <silent> <leader>ff :FZF!<CR>
 
-" ============================================================================================ "
-"                                    File Watcher                                              "
-" ============================================================================================ "
-autocmd FileWritePost,BufWritePost *.less :call LessCSSCompress()
-function! LessCSSCompress()
-    let cwd = expand('<afile>:p:h')
-    let name = expand('<afile>:t:r')
-    if (executable('lessc'))
-        cal system('lessc '.cwd.'/'.name.'.less > '.cwd.'/../css/'.name.'.css &')
-    endif
-endfunction
-
-" ============================================================================================ "
-"                                    current theme setting                                     "
-" ============================================================================================ "
 colorscheme snazzy
